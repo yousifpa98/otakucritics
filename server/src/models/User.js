@@ -1,25 +1,36 @@
 import { Schema, model } from "mongoose";
 import bcrypt from "bcrypt";
 
-const userSchema = new Schema({
-  name: {
-    type: String,
-    required: true,
+const userSchema = new Schema(
+  {
+    username: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    password: {
+      type: String,
+      required: true,
+      validate: {
+        validator: function (value) {
+          return /^(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/.test(value);
+        },
+        message:
+          "Password must be at least 8 characters long and include at least one uppercase letter, one number, and one special character.",
+      },
+    },
+    watchlist: {
+      type: [String],
+      default: [],
+    },
   },
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  password: {
-    type: String,
-    required: true,
-  },
-  watchlist: {
-    type: [String],
-    default: [],
-  },
-});
+  { timestamps: true },
+);
 
 userSchema.pre("save", async function (next) {
   try {

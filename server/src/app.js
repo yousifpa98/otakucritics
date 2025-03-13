@@ -4,6 +4,7 @@ import helmet from "helmet";
 import compression from "compression";
 import morgan from "morgan";
 import { connectDb } from "./libs/db.js";
+import userRoutes from "./routes/userRoutes.js"
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use(express.json());
 connectDb()
 
 // Routes
+app.use("/users", userRoutes)
 
 
 // 404 Error Handler
