@@ -1,0 +1,66 @@
+.register-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background: var(--color-bg-light);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+    text-align: center;
+  }
+  
+  h2 {
+    font-family: var(--font-heading);
+    color: var(--color-primary);
+    margin-bottom: 15px;
+  }
+  
+  .register-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .register-form input {
+    margin-bottom: 12px;
+    padding: 10px;
+    border: 2px solid var(--color-border);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+  }
+  
+  .register-form button {
+    background-color: var(--color-primary);
+    color: var(--color-text-dark);
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color var(--transition-fast);
+  }
+  
+  .register-form button:hover {
+    background-color: var(--color-primary-dark);
+  }
+  
+  .error-message {
+    color: var(--color-error);
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+  }
+  
+  .login-link {
+    margin-top: 10px;
+    font-size: 0.9rem;
+  }
+  
+  .login-link a {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .login-link a:hover {
+    color: var(--color-primary-dark);
+  }
+  
