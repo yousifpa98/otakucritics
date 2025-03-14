@@ -4,23 +4,24 @@ import helmet from "helmet";
 import compression from "compression";
 import morgan from "morgan";
 import { connectDb } from "./libs/db.js";
-import userRoutes from "./routes/userRoutes.js"
+import userRoutes from "./routes/userRoutes.js";
+import cookieParser from "cookie-parser";
 
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({ credentials: true, origin: true }));
 app.use(helmet());
 app.use(compression());
 app.use(morgan("dev"));
 app.use(express.json());
+app.use(cookieParser());
 
 // Database Connection
-connectDb()
+connectDb();
 
 // Routes
-app.use("/users", userRoutes)
-
+app.use("/users", userRoutes);
 
 // 404 Error Handler
 app.use((req, res, next) => {
