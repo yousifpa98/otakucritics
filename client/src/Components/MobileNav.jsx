@@ -12,7 +12,7 @@ const MobileNav = () => {
       <ul className="nav-list">
         {navItems.map((nI) => {
           return (
-            <li className="nav-item">
+            <li key={nI.id} className="nav-item">
               <Link to={nI.to}>{nI.name}</Link>
             </li>
           );
