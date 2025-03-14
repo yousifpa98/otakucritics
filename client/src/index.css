@@ -1,5 +1,204 @@
+/* Basis Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+/* Globale Variablen */
+:root {
+  font-family: "M PLUS 1p", Arial, Helvetica, sans-serif;
+  --font-heading: "Freckle Face", cursive;
+  --font-body: "M PLUS 1p", sans-serif;
+
+  /* General Styles */
+  --border-radius: 8px;
+  --transition-fast: 0.2s ease-in-out;
+  --transition-slow: 0.4s ease-in-out;
+  --shadow-light: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-dark: 0px 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Light Mode */
+[data-theme="light"] {
+  /* Primary Color */
+  --color-primary: #ff5722;
+  --color-primary-light: #ff8a50;
+  --color-primary-dark: #e64a19;
+
+  /* Accent */
+  --color-accent: #ffc107;
+
+  /* Background */
+  --color-bg: #fff5e1;
+  --color-bg-light: #ffe0b2;
+  --color-bg-dark: #f57c00;
+
+  /* Text */
+  --color-text: #212121;
+  --color-text-light: #666666;
+  --color-text-dark: #000000;
+
+  /* Border */
+  --color-border: #ff9800;
+
+  /* Status */
+  --color-error: #d32f2f;
+  --color-success: #388e3c;
+  --color-warning: #ffa000;
+  --color-info: #0288d1;
+}
+
+/* Dark Mode */
+[data-theme="dark"] {
+  --color-bg: #121212;
+  --color-bg-light: #1e1e1e;
+  --color-bg-dark: #000000;
+
+  --color-primary: #ff7043;
+  --color-primary-light: #ffab91;
+  --color-primary-dark: #d84315;
+
+  --color-accent: #ffd54f;
+
+  --color-text: #eeeeee;
+  --color-text-light: #b3b3b3;
+  --color-text-dark: #ffffff;
+
+  --color-border: #424242;
+
+  --color-error: #e57373;
+  --color-success: #66bb6a;
+  --color-warning: #ffca28;
+  --color-info: #29b6f6;
+}
+
+/* General Styles */
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  transition: background-color var(--transition-slow),
+    color var(--transition-fast);
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  color: var(--color-primary);
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+h2 {
+  font-size: 2rem;
+}
+h3 {
+  font-size: 1.75rem;
+}
+h4 {
+  font-size: 1.5rem;
+}
+h5 {
+  font-size: 1.25rem;
+}
+h6 {
+  font-size: 1rem;
+}
+
+/* Links */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-primary-light);
+}
+
+/* Lists */
+ul {
+  list-style: none;
+}
+
+/* Buttons */
+button {
+  background-color: var(--color-primary);
+  color: var(--color-text-dark);
+  border: none;
+  padding: 10px 16px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-light);
+  cursor: pointer;
+  transition: background-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+button:hover:not(.theme-toggle:hover) {
+  background-color: var(--color-primary-dark);
+  box-shadow: var(--shadow-dark);
+}
+
+button:disabled {
+  background-color: var(--color-border);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Inputs */
+input:not(input[type="checkbox"]),
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid var(--color-border);
+  border-radius: var(--border-radius);
+  background-color: var(--color-bg-light);
+  color: var(--color-text);
+  font-size: 1rem;
+  transition: border var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+input:focus,
+textarea:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0px 0px 8px var(--color-primary-light);
+  outline: none;
+}
+
+/* Cards */
+.card {
+  background: var(--color-bg-light);
+  border-radius: var(--border-radius);
+  padding: 16px;
+  box-shadow: var(--shadow-light);
+  transition: box-shadow var(--transition-fast);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-dark);
+}
+
+/* Dark Mode Adjustments */
+[data-theme="dark"] button {
+  color: var(--color-text-light);
+}
+
+[data-theme="dark"] input,
+[data-theme="dark"] textarea {
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-light);
+  border-color: var(--color-border);
+}
+
+[data-theme="dark"] .card {
+  background: var(--color-bg-light);
 }
