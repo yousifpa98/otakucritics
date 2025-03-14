@@ -47,7 +47,7 @@ export const createUser = async (req, res) => {
   }
 };
 
-// Login Funktion
+// Login function
 export const login = async (req, res) => {
   try {
     // get login data from request body
@@ -76,11 +76,42 @@ export const login = async (req, res) => {
         httpOnly: true,
         secure: true,
         sameSite: "None",
-        maxAge: 7* 24 * 60 * 60 * 1000, // 7 days
+        maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
       })
       .json({ message: "Login successful" });
   } catch (error) {
     console.error("Login error:", error);
     res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
+// currentUser funct
+export const currentUser = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.userId);
+    if (!user) return res.status(404).json({ message: "User not found" });
+
+    res.json(user);
+  } catch (error) {
+    return res.status(500).json({
+      message: "Internal Server Error",
+      error: error.message,
+    });
+  }
+};
+
+// logout funct
+export const logout = (req, res) => {
+  try {
+    res
+      .clearCookie("jwt", { httpOnly: true, sameSite: "None", secure: true })
+      .status(200)
+      .json({ message: "Logged out" });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      message: "Internal Server Error",
+      error: error.message,
+    });
   }
 };
