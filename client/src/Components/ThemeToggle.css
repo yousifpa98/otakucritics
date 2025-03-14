@@ -1,0 +1,29 @@
+.theme-toggle {
+  background-color: var(--color-info);
+  box-shadow: none;
+  padding: 0;
+  width: 49px;
+  height: 26px;
+  position: relative;
+}
+
+.theme-toggle.dark {
+  background-color: var(--color-bg);
+  box-shadow: 0 0 4px 0 rgba(255, 255, 255, 0.2);
+}
+
+.thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  transition: var(--transition-fast);
+}
+
+.thumb.dark {
+  background-color: var(--color-text-light);
+  transform: translateX(23px);
+}
