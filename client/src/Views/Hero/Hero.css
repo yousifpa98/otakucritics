@@ -46,3 +46,27 @@
   filter: drop-shadow(0px 17px 10px rgba(0, 0, 0, 0.4));
   margin: 0 auto;
 }
+
+.suggestions {
+  position: absolute;
+  transition: all 0.3s ease;
+  list-style: none;
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+  background-color: var(--sec-bg);
+  padding: 2rem;
+  width: 100%;
+  top: 25em;
+  z-index: 100;
+  background-color: var(--color-bg-light);
+}
+
+.suggestions li {
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid var(--main-accent);
+}
+
+.suggestions:hover {
+  cursor: pointer;
+}
