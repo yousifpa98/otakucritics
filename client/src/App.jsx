@@ -4,6 +4,7 @@ import Register from "./Components/Register";
 import { useAuth } from "./contexts/AuthContext";
 import Hero from "./Views/Hero/Hero";
 import "./App.css";
+import AnimeDisplayPage from "./Components/AnimeDisplayPage";
 
 const App = () => {
   const user = useAuth();
@@ -12,10 +13,12 @@ const App = () => {
     <main>
       <Routes>
         <Route path="/" element={<Hero />} />
+        {/* {console.log(user.user)} */}
         <Route
           path="/register"
-          element={user ? <Navigate to="/" /> : <Register />}
+          element={user.user ? <Navigate to="/" /> : <Register />}
         />
+        <Route path="/search/:animeName" element={<AnimeDisplayPage />} />
       </Routes>
     </main>
   );
